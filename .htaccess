@@ -1,0 +1,12 @@
+RewriteEngine on
+## Manejo de errores de Apache. Cuando se produzca uno de estos errores, redirigimos a una pagina especial desarrollada por nosotros.
+ErrorDocument 404 /index.php
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+
+Rewriterule ^busqueda/$ pages/buscar.php?buscador=$1 [QSA,L]
+
+Rewriterule ^product/([A-Za-z0-9_-]+).html$ pages/product.php?seo=$1 [QSA,L]
+
+RewriteBase /
